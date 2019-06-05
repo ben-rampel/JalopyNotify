@@ -1,0 +1,48 @@
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-2">
+            <div class="container">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="makeLabel">Make</span>
+                    </div>
+                    <input type="text" ng-model="$scope.makeQuery" class="form-control" aria-label="Make" aria-describedby="makeLabel">
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="modelLabel">Model</span>
+                    </div>
+                    <input type="text" ng-model="$scope.modelQuery" class="form-control" aria-label="Model" aria-describedby="modelLabel">
+                </div>
+                <div class="input-group mb-2 w-75">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Min Year</span>
+                    </div>
+                    <input type="text" ng-model="$scope.minYear" class="form-control" >
+                </div>
+                <div class="input-group mb-2 w-75">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Max Year</span>
+                    </div>
+                    <input type="text" ng-model="$scope.maxYear" class="form-control" >
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <h4 class="text-center">Listings</h4>
+            <ul class="list-unstyled">
+                <li class="border media mb-2 mt-1 shadow-sm" ng-repeat="listing in listings | filter:{make:$scope.makeQuery}">
+                    <img ng-if="listing.images.length > 0" ng-src="{{listing.images[0]}}" style="height:200px; width:350px; object-fit: cover;" class="mr-3">
+                    <img ng-if="listing.images.length === 0" src="noImg.png" style="height:200px; width:350px; object-fit: cover;" class="mr-3">
+                    <div class="media-body">
+                        <div class="clearfix mt-2 mr-2">
+                            <h5 id="title" class="mt-0 mb-1 float-left"> {{listing.title}}</h5>
+                            <h5 class="float-right">{{listing.price | currency}}</h5>
+                        </div>
+                        <p class="mt-2"><span>{{listing.attributes["odometer"]}}</span> <span>miles</span></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

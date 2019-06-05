@@ -1,0 +1,4 @@
+.idea
+target
+CraigslistParser.iml
+src/main/resources/static/app/lib
